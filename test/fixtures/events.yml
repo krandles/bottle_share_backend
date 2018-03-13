@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2018-03-13
+  location: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  description: MyString
+  private: false
+
+two:
+  date: 2018-03-13
+  location: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  description: MyString
+  private: false
