@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_secure_password
+
   has_many :invitations
   has_many :posts
   has_many :hosted_events, class_name: "Event",
