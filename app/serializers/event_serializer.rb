@@ -1,3 +1,3 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :date, :location, :address, :city, :state, :zip, :description, :private
+  attributes :id, :title, :date, :location, :address, :address2, :city, :state, :zip, :description, :private
 end
