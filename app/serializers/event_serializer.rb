@@ -1,5 +1,5 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :title, :date, :location, :address, :address2, :city, :state, :zip, :description, :private, :posts, :invitations
+  attributes :id, :title, :date, :location, :address, :address2, :city, :state, :zip, :description, :private, :posts, :invitations, :map_url
 
   def invitations
     invites = []
@@ -10,7 +10,7 @@ class EventSerializer < ActiveModel::Serializer
       invites.push(invite)
     end
 
-    return invites
+    invites
   end
 
   def posts
@@ -22,7 +22,14 @@ class EventSerializer < ActiveModel::Serializer
       posts_array.push(post)
     end
 
-    return posts_array
+    posts_array
+  end
+
+  def map_url
+    full_address = object.address + ", " + object.city + ", " + object.state + " " + object.zip
+    full_address = full_address.gsub(/\s/, "%20")
+    full_address = full_address.gsub(",", "%2C")
+    "https://www.google.com/maps/embed/v1/place?q=#{full_address}&key="
   end
 
 
