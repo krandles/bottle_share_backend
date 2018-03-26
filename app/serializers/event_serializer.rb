@@ -1,5 +1,5 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :title, :date, :location, :address, :address2, :city, :state, :zip, :description, :private, :posts, :invitations, :map_url
+  attributes :id, :title, :date, :location, :address, :address2, :city, :state, :zip, :description, :private, :posts, :invitations, :map_url, :organizer_id
 
   def invitations
     invites = []

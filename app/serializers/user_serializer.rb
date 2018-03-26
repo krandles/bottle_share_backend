@@ -8,6 +8,7 @@ class UserSerializer < ActiveModel::Serializer
       invite = i.attributes
       invite[:event] = i.event.title
       invite[:date] = i.event.date
+      invite[:organizer] = i.event.organizer.name
       invitations_array.push(invite)
     end
 
