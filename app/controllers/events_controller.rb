@@ -26,6 +26,7 @@ class EventsController < ApplicationController
 
   # PATCH/PUT /events/1
   def update
+    @event = Event.find_by(id: params[:id])
     if @event.update(event_params)
       render json: @event
     else
