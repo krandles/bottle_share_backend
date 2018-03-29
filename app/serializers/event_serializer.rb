@@ -1,5 +1,5 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :title, :date, :location, :address, :address2, :city, :state, :zip, :description, :private, :posts, :invitations, :map_url, :organizer_id
+  attributes :id, :title, :date, :location, :address, :address2, :city, :state, :zip, :description, :private, :posts, :invitations, :map_url, :organizer_id, :host
 
   def invitations
     invites = []
@@ -30,6 +30,10 @@ class EventSerializer < ActiveModel::Serializer
     full_address = full_address.gsub(/\s/, "%20")
     full_address = full_address.gsub(",", "%2C")
     "https://www.google.com/maps/embed/v1/place?q=#{full_address}&key="
+  end
+
+  def host
+    object.organizer.name
   end
 
 
