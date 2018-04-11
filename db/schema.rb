@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180313194411) do
+ActiveRecord::Schema.define(version: 20180411054233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "beers", force: :cascade do |t|
+    t.string "name"
+    t.float "abv"
+    t.string "style"
+    t.string "img_url"
+    t.string "description"
+    t.bigint "brewery_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brewery_id"], name: "index_beers_on_brewery_id"
+  end
+
+  create_table "breweries", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "title"
@@ -55,6 +75,17 @@ ActiveRecord::Schema.define(version: 20180313194411) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string "content"
+    t.integer "rating"
+    t.bigint "beer_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["beer_id"], name: "index_reviews_on_beer_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -65,8 +96,11 @@ ActiveRecord::Schema.define(version: 20180313194411) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "beers", "breweries"
   add_foreign_key "invitations", "events"
   add_foreign_key "invitations", "users"
   add_foreign_key "posts", "events"
   add_foreign_key "posts", "users"
+  add_foreign_key "reviews", "beers"
+  add_foreign_key "reviews", "users"
 end

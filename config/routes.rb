@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :reviews
+  resources :breweries
+  resources :beers
   resources :events
   resources :invitations
   resources :posts
