@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       resources :invitations
       resources :posts
       resources :users
-    
+
       post "/login", to: 'auth#login'
       post "/current_user", to: 'auth#current'
     end
