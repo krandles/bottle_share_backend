@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  validates_presence_of :name, :email, :password_digest, :location, :zip_code
+  validates :email, uniqueness: true
+
   has_secure_password
 
   has_many :invitations
