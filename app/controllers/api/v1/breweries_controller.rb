@@ -1,5 +1,6 @@
 class Api::V1::BreweriesController < ApplicationController
   before_action :set_brewery, only: [:show, :update, :destroy]
+  before_action :authorize_user!, only: [:create, :update, :destroy]
 
   # GET /breweries
   def index

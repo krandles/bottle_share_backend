@@ -1,5 +1,6 @@
 class Api::V1::PostsController < ApplicationController
   before_action :set_post, only: [:show, :update, :destroy]
+  before_action :authorize_user!
 
   # GET /posts
   def index

@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   validates_presence_of :name, :email, :password_digest, :location, :zip_code
   validates :email, uniqueness: true
+  validates :password, length: { minimum: 8 }
 
   has_secure_password
 

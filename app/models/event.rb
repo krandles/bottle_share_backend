@@ -3,4 +3,6 @@ class Event < ApplicationRecord
 
   has_many :invitations
   has_many :posts
+
+  validates_presence_of :title, :date, :location, :address, :city, :state, :zip, :description, :private
 end

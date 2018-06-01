@@ -1,5 +1,6 @@
 class Api::V1::InvitationsController < ApplicationController
   before_action :set_invitation, only: [:show, :update, :destroy]
+  before_action :authorize_user!
 
   # GET /invitations
   def index

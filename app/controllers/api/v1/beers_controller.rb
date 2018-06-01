@@ -1,5 +1,6 @@
 class Api::V1::BeersController < ApplicationController
   before_action :set_beer, only: [:show, :update, :destroy]
+  before_action :authorize_user!, only: [:create, :update, :destroy]
 
   # GET /beers
   def index
@@ -46,6 +47,6 @@ class Api::V1::BeersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def beer_params
-      params.require(:beer).permit(:name, :abv, :brewery, :style, :img_url, :description, :brewery_id)
+      params.require(:beer).permit(:id, :name, :abv, :style, :img_url, :description, :brewery_id)
     end
 end

@@ -1,5 +1,6 @@
 class Api::V1::ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :update, :destroy]
+  before_action :authorize_user!, only: [:create, :update, :destroy]
 
   # GET /reviews
   def index
