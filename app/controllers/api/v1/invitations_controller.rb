@@ -19,7 +19,7 @@ class Api::V1::InvitationsController < ApplicationController
     @invitation = Invitation.new(invitation_params)
 
     if @invitation.save
-      render json: @invitation, status: :created, location: @invitation
+      render json: @invitation, status: :created, location: api_v1_invitation_url(@invitation)
     else
       render json: @invitation.errors, status: :unprocessable_entity
     end
